@@ -44,6 +44,7 @@ dashboardPage(skin = "black",
       tabItem(tabName = "help",
               tags$a(href="mailto:badrinarayanan.srinivasan@iprospect.com", 
                                        "Feedback / Feature request"))
-    )
+    ),
+    tags$body(includeHTML("gtmtag.html"))
   )
 )
