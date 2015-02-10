@@ -1,102 +1,76 @@
 library(shinydashboard)
 
+source("Global.R")
+
 dashboardPage(
   dashboardHeader(title = "iTag"),
   dashboardSidebar(),
   dashboardBody(
     fluidRow(
       box(width = 2, height = 4,
-          selectInput(inputId = "pr", "Planned or Responsive",
-                      c("Planned" = "planned",
-                        "Responsive" = "responsive")),
-          selectInput(inputId = "channel", "Channel",
-                      c("PPC" = "ppc",
-                        "Outbrain" = "outbrain",
-                        "Taboola" = "taboola",
-                        "Trueview" = "trueview",
-                        "Display" = "display",
-                        "Facebook" = "facebook",
-                        "YouTube" = "youtube",
-                        "Twitter" = "twitter",
-                        "linkedin" = "linkedin")),
+          selectInput(inputId = "pr", "Planned or Responsive", plre),
+          selectInput(inputId = "channel", "Channel",channelInput),
           conditionalPanel("input.channel == 'ppc'", 
-                           selectInput(inputId = "po", "Paid / Organic",c("Paid" = "paid")),
-                           selectInput(inputId = "format", 
-                                       "Channel Format",c("PPC" = "ppc", "Other" = "other"))),
-          conditionalPanel("input.channel == 'outbrain'", 
-                           selectInput(inputId = "po", "Paid / Organic",c("Paid" = "paid")),
-                           selectInput(inputId = "format", 
-                                       "Channel Format",c("Advertorial" = "advertorial",
-                                                          "Other" = "other"))),
-          conditionalPanel("input.channel == 'taboola'", 
-                           selectInput(inputId = "po", "Paid / Organic",c("Paid" = "paid")),
-                           selectInput(inputId = "format", 
-                                       "Channel Format",c("Advertorial" = "advertorial",
-                                                          "Other" = "other"))),
-          conditionalPanel("input.channel == 'trueview'", 
-                           selectInput(inputId = "po", "Paid / Organic",c("Paid" = "paid")),
-                           selectInput(inputId = "format", 
-                                       "Channel Format",c("In-Stream" = "instream",
-                                                          "In-Display" = "indisplay",
-                                                          "Other" = "other"))),
-          conditionalPanel("input.channel == 'display'", 
-                           selectInput(inputId = "po", "Paid / Organic",c("Paid" = "paid")),
-                           selectInput(inputId = "format", 
-                                       "Channel Format",c("Banner" = "banner",
-                                                          "Other" = "other"))),
-          conditionalPanel("input.channel == 'facebook'", 
-                           selectInput(inputId = "po", "Paid / Organic",c("Paid" = "paid",
-                                                                          "Organic" = "organic")),
-                           selectInput(inputId = "format", 
-                                       "Channel Format",c("Other" = "other"))),
-          conditionalPanel("input.channel == 'youtube'", 
-                           selectInput(inputId = "po", "Paid / Organic",c("Paid" = "paid",
-                                                                          "Organic" = "organic")),
-                           selectInput(inputId = "format", 
-                                       "Channel Format",c("Video" = "video",
-                                                          "Profile" = "profile",
-                                                          "Other" = "other"))),
-          conditionalPanel("input.channel == 'twitter'", 
-                           selectInput(inputId = "po", "Paid / Organic",c("Paid" = "paid",
-                                                                          "Organic" = "organic")),
-                           selectInput(inputId = "format", 
-                                       "Channel Format",c("Tweet" = "tweet",
-                                                          "Other" = "other"))),
-          conditionalPanel("input.channel == 'linkedin'", 
-                           selectInput(inputId = "po", "Paid / Organic",c("Paid" = "paid",
-                                                                          "Organic" = "organic")),
-                           selectInput(inputId = "format", 
-                                       "Channel Format",c("Articles" = "articles",
-                                                          "Profile" = "profile",
-                                                          "Other" = "other")))
+                           selectInput(inputId = "po", "Paid / Organic",paidOnly),
+                           selectInput(inputId = "format", "Channel Format", ppcFormatType)),
           
-          ),
+          conditionalPanel("input.channel == 'outbrain'", 
+                           selectInput(inputId = "po", "Paid / Organic",paidOnly),
+                           selectInput(inputId = "format", "Channel Format", outbrainFormatType)),
+          
+          conditionalPanel("input.channel == 'taboola'", 
+                           selectInput(inputId = "po", "Paid / Organic",paidOnly),
+                           selectInput(inputId = "format", "Channel Format",taboolaFormatType)),
+          
+          conditionalPanel("input.channel == 'trueview'", 
+                           selectInput(inputId = "po", "Paid / Organic",paidOnly),
+                           selectInput(inputId = "format", "Channel Format",trueviewFormatType)),
+          
+          conditionalPanel("input.channel == 'display'", 
+                           selectInput(inputId = "po", "Paid / Organic",paidOnly),
+                           selectInput(inputId = "format", "Channel Format",displayFormatType)),
+          
+          conditionalPanel("input.channel == 'facebook'", 
+                           selectInput(inputId = "po", "Paid / Organic",paidOrganic),
+                           selectInput(inputId = "format", "Channel Format",facebookFormatType)),
+          
+          conditionalPanel("input.channel == 'youtube'", 
+                           selectInput(inputId = "po", "Paid / Organic",paidOrganic),
+                           selectInput(inputId = "format", "Channel Format", youtubeFormatType)),
+          
+          conditionalPanel("input.channel == 'twitter'", 
+                           selectInput(inputId = "po", "Paid / Organic",paidOrganic),
+                           selectInput(inputId = "tformat", "Channel Format", twitterFormatType)),
+          
+          conditionalPanel("input.channel == 'linkedin'", 
+                           selectInput(inputId = "po", "Paid / Organic",paidOrganic),
+                           selectInput(inputId = "lformat", "Channel Format",linkedinFormatType))
+      ),
       
       box(width = 2, height = 4,
-          selectInput(inputId = "product", "Product",
-                      c("All" = "all",
-                        "CHI" = "chi",
-                        "CHC" = "chc",
-                        "Energy" = "energy",
-                        "Landlords" = "landlords")),
-          selectInput(inputId = "campaign", "Campaign Name",
-                      c("C1" = "c1",
-                        "C2" = "c2",
-                        "C3" = "c3",
-                        "C4" = "c4",
-                        "C5" = "c5")),
+          selectInput(inputId = "product", "Product", products),
+          selectInput(inputId = "campaign", "Campaign Name", campaigns),
+          
+          conditionalPanel("input.campaign == 'other'", 
+                           textInput(inputId = "otherCampaign", "Other")),
           
           textInput(inputId = "url", label = "URL"),
           radioButtons(inputId = "creative", "Creative", selected = "no",
                        c("Yes" = "yes",
                          "No" = "no")),
+          
           conditionalPanel("input.creative == 'yes'", 
                            textInput(inputId = "cname", "Creative Name"),
                            radioButtons(inputId = "bbb", 
                                        "Build / Borrow / Buy",c("Build" = "build",
                                                           "Borrow" = "borrow",
-                                                          "Buy" = "buy")))
-      )
+                                                          "Buy" = "buy"))),
+          
+          actionButton(inputId = "submit", label = "Submit")
+      ),
+      
+      box(title = "Tracking code", 
+          verbatimTextOutput("trackingCode"))
     )
   )
 )
