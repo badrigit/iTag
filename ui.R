@@ -2,7 +2,7 @@ library(shinydashboard)
 
 source("Global.R")
 
-dashboardPage(
+dashboardPage(skin = "black",
   dashboardHeader(title = "iTag"),
   dashboardSidebar(
     sidebarMenu(
@@ -14,13 +14,15 @@ dashboardPage(
     tabItems(
       tabItem(tabName = "adobe",
               fluidRow(
-                box(width = 2, height = 4,
+                box(width = 2, height = 4, solidHeader = TRUE, 
+                    collapsible = TRUE, status = "success", 
                     selectInput(inputId = "pr", "Planned or Responsive", plre),
                     selectInput(inputId = "channel", "Channel",channelInput),
                     uiOutput(outputId = "channelFormat")
                 ),
                 
-                box(width = 2, height = 4,
+                box(width = 2, height = 4, solidHeader = TRUE, 
+                    collapsible = TRUE, status = "success",
                     selectInput(inputId = "product", "Product", products),
                     selectInput(inputId = "campaign", "Campaign Name", campaigns),
                     
@@ -34,8 +36,8 @@ dashboardPage(
                     actionButton(inputId = "submit", label = "Submit")
                 ),
                 
-                box(title = "Tracking code", 
-                    verbatimTextOutput("trackingCode"))
+                valueBox(subtitle = strong("Tracking Code"), color = "green", width = "2", 
+                         verbatimTextOutput("trackingCode"))
               )
       ),
       
