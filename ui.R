@@ -44,7 +44,7 @@ dashboardPage(
           
           conditionalPanel("input.channel == 'linkedin'", 
                            selectInput(inputId = "po", "Paid / Organic",paidOrganic),
-                           selectInput(inputId = "format", "Channel Format",linkedinFormatType))
+                           selectInput(inputId = "format", "Channel Format", linkedinFormatType))
       ),
       
       box(width = 2, height = 4,
@@ -57,10 +57,14 @@ dashboardPage(
           textInput(inputId = "url", label = "URL"),
           
           textInput(inputId = "cname", "Creative / Ad Name"),
-                           
-          radioButtons(inputId = "bbb", "Build / Borrow / Buy",c("Build" = "ui", 
-                                                                 "Borrow" = "or",
-                                                                 "Buy" = "uy")),
+          
+          conditionalPanel("input.channel == 'ppc'", 
+                           selectInput(inputId = "bbb", "Build / Borrow / Buy",
+                                        c("Build" = "ui"))),
+          
+          conditionalPanel("input.channel != 'ppc'", 
+                           selectInput(inputId = "bbb", "Build / Borrow / Buy",
+                                        c("Build" = "ui", "Borrow" = "or","Buy" = "uy"))),
           
           actionButton(inputId = "submit", label = "Submit")
       ),
