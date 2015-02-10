@@ -40,11 +40,11 @@ dashboardPage(
           
           conditionalPanel("input.channel == 'twitter'", 
                            selectInput(inputId = "po", "Paid / Organic",paidOrganic),
-                           selectInput(inputId = "tformat", "Channel Format", twitterFormatType)),
+                           selectInput(inputId = "format", "Channel Format", twitterFormatType)),
           
           conditionalPanel("input.channel == 'linkedin'", 
                            selectInput(inputId = "po", "Paid / Organic",paidOrganic),
-                           selectInput(inputId = "lformat", "Channel Format",linkedinFormatType))
+                           selectInput(inputId = "format", "Channel Format",linkedinFormatType))
       ),
       
       box(width = 2, height = 4,
@@ -55,16 +55,12 @@ dashboardPage(
                            textInput(inputId = "otherCampaign", "Other")),
           
           textInput(inputId = "url", label = "URL"),
-          radioButtons(inputId = "creative", "Creative", selected = "no",
-                       c("Yes" = "yes",
-                         "No" = "no")),
           
-          conditionalPanel("input.creative == 'yes'", 
-                           textInput(inputId = "cname", "Creative Name"),
-                           radioButtons(inputId = "bbb", 
-                                       "Build / Borrow / Buy",c("Build" = "build",
-                                                          "Borrow" = "borrow",
-                                                          "Buy" = "buy"))),
+          textInput(inputId = "cname", "Creative / Ad Name"),
+                           
+          radioButtons(inputId = "bbb", "Build / Borrow / Buy",c("Build" = "ui", 
+                                                                 "Borrow" = "or",
+                                                                 "Buy" = "uy")),
           
           actionButton(inputId = "submit", label = "Submit")
       ),

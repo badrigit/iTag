@@ -12,28 +12,21 @@ shinyServer(function(input, output) {
           if((input$campaign == "other") && (input$otherCampaign == "")){
             return("Missing Campaign Name")
           } else if((input$campaign == "other") && (input$otherCampaign != "")){
-            if((input$creative == "yes") && (input$cname != "")){
-              tag <- paste(input$pr, input$channel, input$po, input$format, input$product,
-                           input$otherCampaign, input$cname, input$bbb, sep = "_")
-              code <- paste(url, "?cid=", tag, sep = "")
-            } else if((input$creative == "yes") && (input$otherCampaign == "")){
+            if(input$cname != ""){
+              tag <- paste(input$pr, input$otherCampaign, input$product, 
+                           input$channel, input$po, input$format,
+                           tolower(input$cname), input$bbb, sep = "_")
+              code <- paste(url, "?cid=cd_", tag, sep = "")
+            } else if(input$cname == ""){
               return("Missing Creative Name")
-            } else {
-              tag <- paste(input$pr, input$channel, input$po, input$format, input$product,
-                           input$otherCampaign, sep = "_")
-              code <- paste(url, "?cid=", tag, sep = "")
             }
           } else {
-            if((input$creative == "yes") && (input$cname != "")){
-              tag <- paste(input$pr, input$channel, input$po, input$format, input$product,
-                           input$otherCampaign, input$cname, input$bbb, sep = "_")
-              code <- paste(url, "?cid=", tag, sep = "")
-            } else if((input$creative == "yes") && (input$otherCampaign == "")){
+            if(input$cname != ""){
+              tag <- paste(input$pr, input$campaign, input$product, input$channel, 
+                           input$po, input$format, tolower(input$cname), input$bbb, sep = "_")
+              code <- paste(url, "?cid=cd_", tag, sep = "")
+            } else if(input$cname == ""){
               return("Missing Creative Name")
-            } else {
-              tag <- paste(input$pr, input$channel, input$po, input$format, input$product,
-                           input$otherCampaign, sep = "_")
-              code <- paste(url, "?cid=", tag, sep = "")
             }
           }
         } else {

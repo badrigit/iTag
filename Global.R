@@ -1,7 +1,7 @@
 # Inputs
 
-plre <- c("Planned" = "planned",
-          "Responsive" = "responsive")
+plre <- c("Planned" = "p",
+          "Responsive" = "r")
 
 channelInput <- c("PPC" = "ppc",
                   "Outbrain" = "outbrain",
@@ -13,8 +13,8 @@ channelInput <- c("PPC" = "ppc",
                   "Twitter" = "twitter",
                   "Linkedin" = "linkedin")
 
-paidOnly <- c("Paid" = "paid")
-paidOrganic <- c("Paid" = "paid", "Organic" = "organic")
+paidOnly <- c("Paid" = "p")
+paidOrganic <- c("Paid" = "p", "Organic" = "o")
 
 ppcFormatType <- c("PPC" = "ppc", "Other" = "other")
 outbrainFormatType <- c("Advertorial" = "advertorial", "Other" = "other")
