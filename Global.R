@@ -32,7 +32,7 @@ products <- c("All" = "all",
               "Energy" = "energy",
               "Landlords" = "landlords")
 
-campaigns <- c("C1" = "c1", "C2" = "c2", "C3" = "c3", "Other" = "other")
+campaigns <- c(read.table("www/campaigns.csv", header = F, stringsAsFactors = F))
 
 # Function to remove symbols (except hyphen) and replace space with hyphen
 

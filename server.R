@@ -94,10 +94,15 @@ shinyServer(function(input, output) {
             return("Missing Campaign Name")
           } else if((input$campaign == "other") && (input$otherCampaign != "")){
             oCampaign <- formatTextInput(input$otherCampaign)
+            write.table(x = oCampaign, file = "www/campaigns.csv", append = T, 
+                        row.names = F, col.names = F, quote = F)
             if(input$cname != ""){
               cName <- formatTextInput(input$cname)
               if(input$format == "other"){
+                fileName <- paste("www/", input$channel,"FormatType.csv", sep="")
                 oChannel <- formatTextInput(input$otherChannel)
+                write.table(x = oChannel, file = fileName, append = T, 
+                            row.names = F, col.names = F, quote = F)
                 tag <- paste(input$pr, oCampaign, input$product, 
                              input$channel, input$po, oChannel,
                              cName, input$bbb, sep = "_")
@@ -115,7 +120,10 @@ shinyServer(function(input, output) {
             if(input$cname != ""){
               cName <- formatTextInput(input$cname)
               if(input$format == "other"){
+                fileName <- paste("www/", input$channel,"FormatType.csv", sep="")
                 oChannel <- formatTextInput(input$otherChannel)
+                write.table(x = oChannel, file = fileName, append = T, 
+                            row.names = F, col.names = F, quote = F)
                 tag <- paste(input$pr, input$campaign, input$product, 
                              input$channel, input$po, oChannel,
                              cName, input$bbb, sep = "_")
