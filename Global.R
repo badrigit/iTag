@@ -16,15 +16,15 @@ channelInput <- c("PPC" = "ppc",
 paidOnly <- c("Paid" = "p")
 paidOrganic <- c("Paid" = "p", "Organic" = "o")
 
-ppcFormatType <- c("PPC" = "ppc", "Other" = "other")
-outbrainFormatType <- c("Advertorial" = "advertorial", "Other" = "other")
-taboolaFormatType <- c("Advertorial" = "advertorial", "Other" = "other")
-trueviewFormatType <- c("In-Stream" = "instream", "In-Display" = "indisplay", "Other" = "other")
-displayFormatType <- c("Banner" = "banner", "Other" = "other")
-facebookFormatType <- c("Other" = "other")
-youtubeFormatType <- c("Video" = "video", "Profile" = "profile", "Other" = "other")
-twitterFormatType <- c("Tweet" = "tweet", "Other" = "other")
-linkedinFormatType <- c("Articles" = "articles", "Profile" = "profile", "Other" = "other")
+ppcFormatType <- c(read.table("www/ppcFormatType.csv", header = F, stringsAsFactors = F))
+outbrainFormatType <- c(read.table("www/outbrainFormatType.csv", header = F, stringsAsFactors = F))
+taboolaFormatType <- c(read.table("www/taboolaFormatType.csv", header = F, stringsAsFactors = F))
+trueviewFormatType <- c(read.table("www/trueviewFormatType.csv", header = F, stringsAsFactors = F))
+displayFormatType <- c(read.table("www/displayFormatType.csv", header = F, stringsAsFactors = F))
+facebookFormatType <- c(read.table("www/facebookFormatType.csv", header = F, stringsAsFactors = F))
+youtubeFormatType <- c(read.table("www/youtubeFormatType.csv", header = F, stringsAsFactors = F))
+twitterFormatType <- c(read.table("www/twitterFormatType.csv", header = F, stringsAsFactors = F))
+linkedinFormatType <- c(read.table("www/linkedinFormatType.csv", header = F, stringsAsFactors = F))
 
 products <- c("All" = "all",
               "CHC" = "chc",
@@ -34,4 +34,13 @@ products <- c("All" = "all",
 
 campaigns <- c("C1" = "c1", "C2" = "c2", "C3" = "c3", "Other" = "other")
 
+# Function to remove symbols (except hyphen) and replace space with hyphen
+
+formatTextInput <- function(x){
+  x <- gsub("\\s+"," ",x)
+  x <- gsub(" ", "-", x)
+  x <- gsub("[^\\w\\-]|\\d","",x,perl = TRUE)
+  x <- tolower(x)
+  return(x)
+}
 

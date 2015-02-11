@@ -6,7 +6,7 @@ dashboardPage(skin = "black",
   dashboardHeader(title = "iTag"),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("Adobe", tabName = "adobe", icon = icon("dashboard")),
+      menuItem("BG - Content Distribution", tabName = "adobe", icon = icon("dashboard")),
       menuItem("Help", tabName = "help", icon = icon("question-circle"))
     )
   ),
@@ -29,14 +29,15 @@ dashboardPage(skin = "black",
                     conditionalPanel("input.campaign == 'other'", 
                                      textInput(inputId = "otherCampaign", "Other")),
                     
-                    textInput(inputId = "url", label = "URL"),
-                    
                     textInput(inputId = "cname", "Creative / Ad Name"),
+                    
+                    textInput(inputId = "url", label = "URL"),
                     
                     actionButton(inputId = "submit", label = "Submit")
                 ),
                 
-                valueBox(subtitle = strong("Tracking Code"), color = "green", width = "2", 
+                valueBox(subtitle = strong("URL + Tracking Code (copy & paste)"), 
+                         color = "green", width = "2", 
                          verbatimTextOutput("trackingCode"))
               )
       ),

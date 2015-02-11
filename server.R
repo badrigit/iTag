@@ -78,7 +78,7 @@ shinyServer(function(input, output) {
   
   output$otherChannelFormat <- renderUI({
     if(input$format == "other"){
-      textInput("otherChannel", "(Other Channel Format)")
+        textInput("otherChannel", "(Other Channel Format)")
     }
   })
   
@@ -93,16 +93,19 @@ shinyServer(function(input, output) {
           if((input$campaign == "other") && (input$otherCampaign == "")){
             return("Missing Campaign Name")
           } else if((input$campaign == "other") && (input$otherCampaign != "")){
+            oCampaign <- formatTextInput(input$otherCampaign)
             if(input$cname != ""){
+              cName <- formatTextInput(input$cname)
               if(input$format == "other"){
-                tag <- paste(input$pr, input$otherCampaign, input$product, 
-                             input$channel, input$po, input$otherChannel,
-                             tolower(input$cname), input$bbb, sep = "_")
+                oChannel <- formatTextInput(input$otherChannel)
+                tag <- paste(input$pr, oCampaign, input$product, 
+                             input$channel, input$po, oChannel,
+                             cName, input$bbb, sep = "_")
                 code <- paste(url, "?cid=cd_", tag, sep = "")
               } else {
-                tag <- paste(input$pr, input$otherCampaign, input$product, 
+                tag <- paste(input$pr, oCampaign, input$product, 
                              input$channel, input$po, input$format,
-                             tolower(input$cname), input$bbb, sep = "_")
+                             cName, input$bbb, sep = "_")
                 code <- paste(url, "?cid=cd_", tag, sep = "")
               }
             } else if(input$cname == ""){
@@ -110,15 +113,17 @@ shinyServer(function(input, output) {
             }
           } else {
             if(input$cname != ""){
+              cName <- formatTextInput(input$cname)
               if(input$format == "other"){
+                oChannel <- formatTextInput(input$otherChannel)
                 tag <- paste(input$pr, input$campaign, input$product, 
-                             input$channel, input$po, input$otherChannel,
-                             tolower(input$cname), input$bbb, sep = "_")
+                             input$channel, input$po, oChannel,
+                             cName, input$bbb, sep = "_")
                 code <- paste(url, "?cid=cd_", tag, sep = "")
               } else {
                 tag <- paste(input$pr, input$campaign, input$product, 
                              input$channel, input$po, input$format,
-                             tolower(input$cname), input$bbb, sep = "_")
+                             cName, input$bbb, sep = "_")
                 code <- paste(url, "?cid=cd_", tag, sep = "")
               }
             }
