@@ -1,7 +1,5 @@
 library(shinydashboard)
 
-source("Global.R")
-
 dashboardPage(skin = "black",
   dashboardHeader(title = "iTag"),
   dashboardSidebar(
@@ -14,20 +12,18 @@ dashboardPage(skin = "black",
     tabItems(
       tabItem(tabName = "adobe",
               fluidRow(
-                box(width = 2, height = 4, solidHeader = TRUE, 
-                    collapsible = TRUE, status = "success", 
+                box(width = 2, height = 4,
                     selectInput(inputId = "pr", "Planned or Responsive", plre),
                     selectInput(inputId = "channel", "Channel",channelInput),
                     uiOutput(outputId = "channelFormat")
                 ),
                 
-                box(width = 2, height = 4, solidHeader = TRUE, 
-                    collapsible = TRUE, status = "success",
+                box(width = 2, height = 4,
                     selectInput(inputId = "product", "Product", products),
+                    
                     selectInput(inputId = "campaign", "Campaign Name", campaigns),
                     
-                    conditionalPanel("input.campaign == 'other'", 
-                                     textInput(inputId = "otherCampaign", "Other")),
+                    uiOutput(outputId = "otherCampaignUI"),
                     
                     textInput(inputId = "cname", "Creative / Ad Name"),
                     
