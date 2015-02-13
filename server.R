@@ -7,7 +7,7 @@ shinyServer(function(input, output) {
   output$channelFormat <- renderUI({
     if(input$channel == 'ppc')
       list(
-        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic", paidOnly),
@@ -16,7 +16,7 @@ shinyServer(function(input, output) {
         radioButtons(inputId = "bbb", "Build / Borrow / Buy", c("Build" = "ui"))
     ) else if(input$channel == 'outbrain'){
       list(
-        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOnly),
@@ -27,7 +27,7 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'taboola'){
       list(
-        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOnly),
@@ -38,7 +38,7 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'trueview'){
       list(
-        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOnly),
@@ -49,7 +49,7 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'display'){
       list(
-        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOnly),
@@ -60,7 +60,7 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'facebook'){
       list(
-        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOrganic),
@@ -71,7 +71,7 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'youtube'){
       list(
-        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOrganic),
@@ -82,7 +82,7 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'twitter'){
       list(
-        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOrganic),
@@ -93,7 +93,7 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'linkedin'){
       list(
-        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOrganic),
