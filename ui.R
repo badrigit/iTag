@@ -12,6 +12,9 @@ dashboardPage(skin = "black",
     tabItems(
       tabItem(tabName = "adobe",
               fluidRow(
+                
+                box(width = 2, height = 4,img(src="logo.png")),
+                
                 box(width = 2, height = 4,
                     selectInput(inputId = "pr", "Planned or Responsive", plre),
                     selectInput(inputId = "channel", "Channel",channelInput),
@@ -19,11 +22,6 @@ dashboardPage(skin = "black",
                 ),
                 
                 box(width = 2, height = 4,
-                    selectInput(inputId = "product", "Product", products),
-                    
-                    selectInput(inputId = "campaign", "Campaign Name", campaigns),
-                    
-                    uiOutput(outputId = "otherCampaignUI"),
                     
                     textInput(inputId = "cname", "Creative / Ad Name"),
                     
@@ -35,6 +33,7 @@ dashboardPage(skin = "black",
                 valueBox(subtitle = strong("URL + Tracking Code (copy & paste)"), 
                          color = "green", width = "2", 
                          verbatimTextOutput("trackingCode"))
+                
               )
       ),
       

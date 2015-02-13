@@ -11,7 +11,8 @@ channelInput <- c("PPC" = "ppc",
                   "Facebook" = "facebook",
                   "YouTube" = "youtube",
                   "Twitter" = "twitter",
-                  "Linkedin" = "linkedin")
+                  "Linkedin" = "linkedin",
+                  "Other" = "other")
 
 paidOnly <- c("Paid" = "p")
 paidOrganic <- c("Paid" = "p", "Organic" = "o")
@@ -43,7 +44,8 @@ products <- c("All" = "all",
               "CHI" = "chi",
               "Energy" = "energy",
               "Eco" = "eco",
-              "Landlords" = "landlords")
+              "Landlords" = "landlords",
+              "Other" = "other")
 
 # Function to remove symbols (except hyphen) and replace space with hyphen
 

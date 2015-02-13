@@ -7,12 +7,18 @@ shinyServer(function(input, output) {
   output$channelFormat <- renderUI({
     if(input$channel == 'ppc')
       list(
+        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "product", "Product", products),
+        uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "po", "Paid / Organic", paidOnly),
         selectInput(inputId = "format", "Channel Format", ppcFormatType),
         uiOutput(outputId = "otherChannelFormat"),
         radioButtons(inputId = "bbb", "Build / Borrow / Buy", c("Build" = "ui"))
     ) else if(input$channel == 'outbrain'){
       list(
+        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "product", "Product", products),
+        uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "po", "Paid / Organic",paidOnly),
         selectInput(inputId = "format", "Channel Format", outbrainFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -21,6 +27,9 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'taboola'){
       list(
+        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "product", "Product", products),
+        uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "po", "Paid / Organic",paidOnly),
         selectInput(inputId = "format", "Channel Format", taboolaFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -29,6 +38,9 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'trueview'){
       list(
+        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "product", "Product", products),
+        uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "po", "Paid / Organic",paidOnly),
         selectInput(inputId = "format", "Channel Format", trueviewFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -37,6 +49,9 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'display'){
       list(
+        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "product", "Product", products),
+        uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "po", "Paid / Organic",paidOnly),
         selectInput(inputId = "format", "Channel Format", displayFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -45,6 +60,9 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'facebook'){
       list(
+        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "product", "Product", products),
+        uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "po", "Paid / Organic",paidOrganic),
         selectInput(inputId = "format", "Channel Format", facebookFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -53,6 +71,9 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'youtube'){
       list(
+        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "product", "Product", products),
+        uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "po", "Paid / Organic",paidOrganic),
         selectInput(inputId = "format", "Channel Format", youtubeFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -61,6 +82,9 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'twitter'){
       list(
+        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "product", "Product", products),
+        uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "po", "Paid / Organic",paidOrganic),
         selectInput(inputId = "format", "Channel Format", twitterFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -69,6 +93,9 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'linkedin'){
       list(
+        selectInput(inputId = "campaign", "Campaign Name", campaigns),
+        selectInput(inputId = "product", "Product", products),
+        uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "po", "Paid / Organic",paidOrganic),
         selectInput(inputId = "format", "Channel Format", linkedinFormatType),
         uiOutput(outputId = "otherChannelFormat"),
