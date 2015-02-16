@@ -48,7 +48,7 @@ dashboardPage(skin = "black",
                              "fields will dynamically change to reflect your inputs.",
                              "Once all of the required fields are filled, click Submit and your", 
                              "tracked URL will appear in the green box.",
-                             "Any questions – please contact us via the 'Help' in the", 
+                             "Any questions - please contact us via the 'Help' in the", 
                              "left-hand menu.")
                 )
               )
