@@ -39,13 +39,13 @@ youtubeFormatType <- c(read.table("www/youtubeFormatType.csv", header = T, strin
 twitterFormatType <- c(read.table("www/twitterFormatType.csv", header = T, stringsAsFactors = F))
 linkedinFormatType <- c(read.table("www/linkedinFormatType.csv", header = T, stringsAsFactors = F))
 
-products <- c("All" = "all",
-              "CHC" = "chc",
+products <- c("CHC" = "chc",
               "CHI" = "chi",
               "Energy" = "energy",
               "Eco" = "eco",
               "Landlords" = "landlords",
-              "Other" = "other")
+              "Other" = "other",
+              "N/A" = "NA")
 
 # Function to remove symbols (except hyphen) and replace space with hyphen
 
