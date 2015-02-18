@@ -7,25 +7,14 @@ shinyServer(function(input, output) {
   output$channelFormat <- renderUI({
     if(input$channel == 'ppc')
       list(
-        selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
+        selectInput(inputId = "campaign", "Content Campaign", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
         selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic", paidOnly),
         selectInput(inputId = "format", "Channel Format", ppcFormatType),
         uiOutput(outputId = "otherChannelFormat"),
         radioButtons(inputId = "bbb", "Build / Borrow / Buy", c("Build" = "ui"))
-    ) else if(input$channel == 'outbrain'){
-      list(
-        selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
-        uiOutput(outputId = "otherCampaignUI"),
-        selectInput(inputId = "product", "Product", products),
-        selectInput(inputId = "po", "Paid / Organic",paidOnly),
-        selectInput(inputId = "format", "Channel Format", outbrainFormatType),
-        uiOutput(outputId = "otherChannelFormat"),
-        radioButtons(inputId = "bbb", "Build / Borrow / Buy", 
-                     c("Build" = "ui", "Borrow" = "or","Buy" = "uy"))
-      )
-    } else if(input$channel == 'taboola'){
+    ) else if(input$channel == 'taboola'){
       list(
         selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
@@ -102,7 +91,18 @@ shinyServer(function(input, output) {
         radioButtons(inputId = "bbb", "Build / Borrow / Buy", 
                      c("Build" = "ui", "Borrow" = "or","Buy" = "uy"))
       )
-    }
+    } else  {
+      list(
+        selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
+        uiOutput(outputId = "otherCampaignUI"),
+        selectInput(inputId = "product", "Product", products),
+        selectInput(inputId = "po", "Paid / Organic",paidOnly),
+        selectInput(inputId = "format", "Channel Format", outbrainFormatType),
+        uiOutput(outputId = "otherChannelFormat"),
+        radioButtons(inputId = "bbb", "Build / Borrow / Buy", 
+                     c("Build" = "ui", "Borrow" = "or","Buy" = "uy"))
+      )
+    } 
   })
   
   output$otherChannelFormat <- renderUI({

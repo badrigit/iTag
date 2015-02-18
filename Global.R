@@ -11,6 +11,8 @@ channelInput <- c("PPC" = "ppc",
                   "Facebook" = "facebook",
                   "YouTube" = "youtube",
                   "Twitter" = "twitter",
+                  "AdYouLike" = "adyoulike",
+                  "Teads" = "teads",
                   "Linkedin" = "linkedin",
                   "Other" = "other")
 
