@@ -46,8 +46,13 @@ products <- c("CHC" = "chc",
               "Energy" = "energy",
               "Eco" = "eco",
               "Landlords" = "landlords",
+              "Community" = "community",
               "Other" = "other",
               "N/A" = "NA")
+
+onsiteContent <- c("Video" = "video",
+                   "Article" = "article",
+                   "Infographic" = "infographic")
 
 # Function to remove symbols (except hyphen) and replace space with hyphen
 

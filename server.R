@@ -7,18 +7,18 @@ shinyServer(function(input, output) {
   output$channelFormat <- renderUI({
     if(input$channel == 'ppc')
       list(
+        selectInput(inputId = "product", "Pillar", products),
         selectInput(inputId = "campaign", "Content Campaign", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
-        selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic", paidOnly),
         selectInput(inputId = "format", "Channel Format", ppcFormatType),
         uiOutput(outputId = "otherChannelFormat"),
         radioButtons(inputId = "bbb", "Build / Borrow / Buy", c("Build" = "ui"))
     ) else if(input$channel == 'taboola'){
       list(
+        selectInput(inputId = "product", "Pillar", products),
         selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
-        selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOnly),
         selectInput(inputId = "format", "Channel Format", taboolaFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -27,9 +27,9 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'trueview'){
       list(
+        selectInput(inputId = "product", "Pillar", products),
         selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
-        selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOnly),
         selectInput(inputId = "format", "Channel Format", trueviewFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -38,9 +38,9 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'display'){
       list(
+        selectInput(inputId = "product", "Pillar", products),
         selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
-        selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOnly),
         selectInput(inputId = "format", "Channel Format", displayFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -49,9 +49,9 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'facebook'){
       list(
+        selectInput(inputId = "product", "Pillar", products),
         selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
-        selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOrganic),
         selectInput(inputId = "format", "Channel Format", facebookFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -60,9 +60,9 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'youtube'){
       list(
+        selectInput(inputId = "product", "Pillar", products),
         selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
-        selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOrganic),
         selectInput(inputId = "format", "Channel Format", youtubeFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -71,9 +71,9 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'twitter'){
       list(
+        selectInput(inputId = "product", "Pillar", products),
         selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
-        selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOrganic),
         selectInput(inputId = "format", "Channel Format", twitterFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -82,9 +82,9 @@ shinyServer(function(input, output) {
       )
     } else if(input$channel == 'linkedin'){
       list(
+        selectInput(inputId = "product", "Pillar", products),
         selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
-        selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOrganic),
         selectInput(inputId = "format", "Channel Format", linkedinFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -93,9 +93,9 @@ shinyServer(function(input, output) {
       )
     } else  {
       list(
+        selectInput(inputId = "product", "Pillar", products),
         selectInput(inputId = "campaign", "Campaign Name", campaigns, selected = "other"),
         uiOutput(outputId = "otherCampaignUI"),
-        selectInput(inputId = "product", "Product", products),
         selectInput(inputId = "po", "Paid / Organic",paidOnly),
         selectInput(inputId = "format", "Channel Format", outbrainFormatType),
         uiOutput(outputId = "otherChannelFormat"),
@@ -136,7 +136,7 @@ shinyServer(function(input, output) {
                 oChannel <- formatTextInput(input$otherChannel)
                 tag <- paste(input$pr, oCampaign, input$product, 
                              input$channel, input$po, oChannel,
-                             cName, input$bbb, sep = "_")
+                             cName, input$bbb, input$onsiteContent, sep = "_")
                 write.table(x = oChannel, file = fileName, append = T, 
                             row.names = F, col.names = F, quote = F)
                 write.table(x = oCampaign, file = "www/campaignNames.csv", append = T, 
@@ -145,7 +145,7 @@ shinyServer(function(input, output) {
               } else {
                 tag <- paste(input$pr, oCampaign, input$product, 
                              input$channel, input$po, input$format,
-                             cName, input$bbb, sep = "_")
+                             cName, input$bbb, input$onsiteContent, sep = "_")
                 write.table(x = oCampaign, file = "www/campaignNames.csv", append = T, 
                             row.names = F, col.names = F, quote = F)
                 code <- paste(url, "?cid=cd_", tag, sep = "")
@@ -163,12 +163,12 @@ shinyServer(function(input, output) {
                             row.names = F, col.names = F, quote = F)
                 tag <- paste(input$pr, input$campaign, input$product, 
                              input$channel, input$po, oChannel,
-                             cName, input$bbb, sep = "_")
+                             cName, input$bbb, input$onsiteContent, sep = "_")
                 code <- paste(url, "?cid=cd_", tag, sep = "")
               } else {
                 tag <- paste(input$pr, input$campaign, input$product, 
                              input$channel, input$po, input$format,
-                             cName, input$bbb, sep = "_")
+                             cName, input$bbb, input$onsiteContent, sep = "_")
                 code <- paste(url, "?cid=cd_", tag, sep = "")
               }
             }

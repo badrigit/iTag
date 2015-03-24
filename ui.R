@@ -33,6 +33,8 @@ dashboardPage(skin = "black",
                     
                     textInput(inputId = "url", label = "URL"),
                     
+                    selectInput(inputId = "onsiteContent", label = "Onsite Content", onsiteContent),
+                    
                     actionButton(inputId = "submit", label = "Submit")
                 ),
                 
